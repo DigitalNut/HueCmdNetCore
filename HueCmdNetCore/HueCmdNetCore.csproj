@@ -5,4 +5,9 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Q42.HueApi" Version="3.5.0" />
+    <PackageReference Include="Q42.HueApi.ColorConverters" Version="3.4.0" />
+  </ItemGroup>
+
 </Project>
