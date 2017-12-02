@@ -1,6 +1,6 @@
 # HueCmdNetCore
 Windows Command Line Tool for controlling the Philips Hue. Use it in scripts/batch files.
-HueCmd - .Net Core 2.0 version. Works on Windows desktop and Windows IOT (arm version under Exe Folder).
+HueCmd - .Net Core 2.0 version. Works on Windows desktop, Linux (x64 and ARM) and Windows IOT (ARM). 
 
 Prebuilt executable is in the EXE folder for desktop and Arm version (works on Windows 10 IOT Raspberry PI).
 
