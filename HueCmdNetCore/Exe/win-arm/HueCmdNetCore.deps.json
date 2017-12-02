@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0/win-arm",
-    "signature": "e63d1137bca2c2aa23ca1cd655634cd7dd59d52a"
+    "signature": "a33b4ee5be3d5805a410b62fd7c35f6de5e6677f"
   },
   "compilationOptions": {},
   "targets": {
@@ -10,8 +10,8 @@
       "HueCmdNetCore/1.0.0": {
         "dependencies": {
           "Microsoft.NETCore.App": "2.0.0",
-          "Q42.HueApi": "3.5.0",
-          "Q42.HueApi.ColorConverters": "3.4.0"
+          "Q42.HueApi": "3.5.2",
+          "Q42.HueApi.ColorConverters": "3.4.1"
         },
         "runtime": {
           "HueCmdNetCore.dll": {}
@@ -82,7 +82,7 @@
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
         }
       },
-      "Q42.HueApi/3.5.0": {
+      "Q42.HueApi/3.5.2": {
         "dependencies": {
           "NETStandard.Library": "2.0.0",
           "Newtonsoft.Json": "10.0.2"
@@ -91,7 +91,7 @@
           "lib/netstandard1.1/Q42.HueApi.dll": {}
         }
       },
-      "Q42.HueApi.ColorConverters/3.4.0": {
+      "Q42.HueApi.ColorConverters/3.4.1": {
         "dependencies": {
           "NETStandard.Library": "2.0.0"
         },
@@ -848,19 +848,19 @@
       "path": "newtonsoft.json/10.0.2",
       "hashPath": "newtonsoft.json.10.0.2.nupkg.sha512"
     },
-    "Q42.HueApi/3.5.0": {
+    "Q42.HueApi/3.5.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-erDTu+DSvn4Tx1Wi8bGw0KYxDetKjuD0FsCmH+741vPiNA7XVybCY1s6oyVcsASAnyMnUtqtW6VFq2cQQlkg6w==",
-      "path": "q42.hueapi/3.5.0",
-      "hashPath": "q42.hueapi.3.5.0.nupkg.sha512"
+      "sha512": "sha512-8gjQcpommmzWuPxUvnSMBiC1iAxBKGoqZ+94TdA3eGFLoX9BpWt6csHOjfj6DUaX+9Bojimqb+4uU1ZtS38/Yw==",
+      "path": "q42.hueapi/3.5.2",
+      "hashPath": "q42.hueapi.3.5.2.nupkg.sha512"
     },
-    "Q42.HueApi.ColorConverters/3.4.0": {
+    "Q42.HueApi.ColorConverters/3.4.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-HtyGYtiNgi//poqPvMZkT89PqGXWMfyiu0C6/6sikm8AwI9V0hFtHIO8cHItIOdM9RGyfKJ6VVsjRtpDi53QOw==",
-      "path": "q42.hueapi.colorconverters/3.4.0",
-      "hashPath": "q42.hueapi.colorconverters.3.4.0.nupkg.sha512"
+      "sha512": "sha512-RZGx4XjLicD7ry7pDYBW1GP04gT4uSqEEU9jOZ2GN3y8muEM8XLlR0R23alhes6NlVP8IZ6mffUE7C3labgzNA==",
+      "path": "q42.hueapi.colorconverters/3.4.1",
+      "hashPath": "q42.hueapi.colorconverters.3.4.1.nupkg.sha512"
     },
     "runtime.any.System.Collections/4.3.0": {
       "type": "package",

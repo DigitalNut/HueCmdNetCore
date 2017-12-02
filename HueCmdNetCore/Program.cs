@@ -10,6 +10,8 @@ namespace HueCmdNetCore
 {
     partial class Program
     {
+        static readonly string VersionString = "1.1";
+
         struct StructCmdLineOptions
         {
             public string ip;
@@ -17,7 +19,7 @@ namespace HueCmdNetCore
             public string color;
             public bool? on;
             public bool? off;
-            public string light;
+            public string[] light;
             public string key;
             public string Register;
             public bool? status;
@@ -110,21 +112,35 @@ namespace HueCmdNetCore
                     command.Effect = Effect.None;
                     command.Alert = Alert.None;
                 }
+                else if (CmdLineOptions.color.Length == 6 && ((CmdLineOptions.color[0] >= '0' && CmdLineOptions.color[0] <= '9') ||
+                                                             (CmdLineOptions.color[0] >= 'a' && CmdLineOptions.color[0] <= 'f') ||
+                                                             (CmdLineOptions.color[0] >= 'A' && CmdLineOptions.color[0] <= 'F')))
+                {
+                    //if (CmdLineOptions.color.Length != 6)
+                    //{
+                    //    Console.WriteLine("Color value must be 6 characters. E.g. 00ff00");
+                    //    return;
+                    //}
+                    command.SetColor(new Q42.HueApi.ColorConverters.RGBColor(CmdLineOptions.color));
+                }
                 else
                 {
-                    if (CmdLineOptions.color.Length != 6)
+                    // treat the color cmd line arg as a color name (e.g. "red")
+                    // FromName will return RGB(0,0,0) if the name is not valid
+                    System.Drawing.Color cc = System.Drawing.Color.FromName(CmdLineOptions.color);
+                    if (cc.ToArgb() == 0)
                     {
-                        Console.WriteLine("Color value must be 6 characters. E.g. 00ff00");
+                        Console.WriteLine("Incorrect color option. Check spelling. Black in not allowed.");
                         return;
                     }
-
-                    command.SetColor(new Q42.HueApi.ColorConverters.RGBColor(CmdLineOptions.color));
+                    command.SetColor(new Q42.HueApi.ColorConverters.RGBColor((int)cc.R, (int)cc.G, (int)cc.B));
                 }
             }
 
             //List<string> lights = new List<string>();
             //lights.Add(CmdLineOptions.light);
-            await client.SendCommandAsync(command, new List<string> { CmdLineOptions.light });
+            await client.SendCommandAsync(command, CmdLineOptions.light );
+            //await client.SendCommandAsync(command, new List<string> { CmdLineOptions.light });
         }
 
 
@@ -135,7 +151,7 @@ namespace HueCmdNetCore
             if (client == null)
                 return;
 
-            if (String.IsNullOrEmpty(CmdLineOptions.light))
+            if (CmdLineOptions.light.Count() == 0)
             {
                 var config = await client.GetBridgeAsync();
                 if (config != null)
@@ -147,7 +163,7 @@ namespace HueCmdNetCore
                     Console.WriteLine("  Portal Conn: " + config.Config.PortalConnection);
                 }
             }
-            else if (String.Compare(CmdLineOptions.light, "0") == 0)
+            else if (CmdLineOptions.light.Count() == 1 && String.Compare(CmdLineOptions.light[0], "0") == 0)
             {
                 var lights = await client.GetLightsAsync();
                 if (lights == null)
@@ -161,9 +177,9 @@ namespace HueCmdNetCore
                     Console.WriteLine("");
                 }
             }
-            else
+            else if (CmdLineOptions.light.Count() > 1)
             {
-                var light = await client.GetLightAsync(CmdLineOptions.light);
+                var light = await client.GetLightAsync(CmdLineOptions.light[0]);
                 if (light == null)
                 {
                     Console.WriteLine("Light ID not found");
@@ -172,10 +188,16 @@ namespace HueCmdNetCore
 
                 PrintLightDetail(light);
             }
+            else
+            {
+                Console.WriteLine("incorrect 'light' command line argument.");
+                return;
+            }
         }
 
         static void PrintLightDetail(Light light)
         {
+            Console.WriteLine("Device ======================================== ");
             Console.WriteLine("         ID: " + light.Id);
             Console.WriteLine("       Name: " + light.Name);
             Console.WriteLine("State ----------------------------------------- ");

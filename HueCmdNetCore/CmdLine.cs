@@ -16,6 +16,9 @@ namespace HueCmdNetCore
                 return false;
             }
 
+            // initialize light member, so we don't have to check for it being NULL.
+            CmdLineOptions.light = new string[0];
+
             try
             {
                 int i = 0;
@@ -29,7 +32,7 @@ namespace HueCmdNetCore
                             break;
                         case "-light":
                             i++;
-                            CmdLineOptions.light = args[i];
+                            ParseLights(args[i]);
                             break;
                         case "-brightness":
                             i++;
@@ -37,7 +40,7 @@ namespace HueCmdNetCore
                             break;
                         case "-color":
                             i++;
-                            CmdLineOptions.color = args[i];
+                            CmdLineOptions.color = args[i].Trim();
                             break;
                         case "-key":
                             i++;
@@ -91,16 +94,29 @@ namespace HueCmdNetCore
         }
 
         /// <summary>
+        /// Parse the '-light' argument 
+        /// </summary>
+        /// <param name="lightArgs"></param>
+        private static void ParseLights(string lightArgs)
+        {
+            if (String.IsNullOrEmpty(lightArgs))
+                return;
+
+            CmdLineOptions.light = lightArgs.Split(',');
+        }
+
+        /// <summary>
         /// Print usage
         /// </summary>
         static void PrintUsage()
         {
-            Console.WriteLine("HueCmdNetCore 1.0");
+            Console.WriteLine("HueCmdNetCore " + VersionString );
             Console.WriteLine(" by DigitalNut");
             Console.WriteLine(" Controls the Philip Hue from your command line\n");
             Console.WriteLine("-ip address          - [optional] IP address of HUE, otherwise will try to \n\t\t\tlocate it automatically");
             Console.WriteLine("-key <key>           - [mandatory] App Key needed to connect to the Hue");
-            Console.WriteLine("-light <id>          - Light to control. Enter 1 to max lights. 0 is only valid with -status");
+            Console.WriteLine("-light <id>,[id]     - Light to control. Enter 1 to max lights. 0 is only valid with -status");
+            Console.WriteLine("                       More then one light can be entered using comma as separator");
             Console.WriteLine("-brightness <number> - Brightness level 0 - 255");
             Console.WriteLine("-color <color>       - Color value in hex 'rrggbb'. E.g. 00FF00");
             Console.WriteLine("                       or <color> can also be 'Once' for alert once or 'Multi' for multiple alerts");

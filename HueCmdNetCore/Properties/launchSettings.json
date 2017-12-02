@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "HueCmdNetCore": {
+      "commandName": "Project",
+      "commandLineArgs": "-ip 192.168.0.59 -key helloween2014key -light 7 -color fsdlk"
+    }
+  }
+}

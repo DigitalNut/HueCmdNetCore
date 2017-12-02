@@ -1,0 +1,13 @@
+﻿-----------------------------------------------------------------
+dotnet build -c release -r win10-x86
+dotnet build -c release -r win10-x64
+
+// Windows 10 Iot on Pi
+dotnet build -c release -r win-arm
+dotnet publish -c release -r win-arm
+
+// Linux x64 (works on Ubuntu)
+dotnet publish -c release -r linux-x64
+
+// Publish 32-bit ARM32
+dotnet publish -c release -r linux-arm
