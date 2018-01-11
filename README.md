@@ -9,9 +9,9 @@ Command line options:
 -ip address          - [optional] IP address of HUE, otherwise will try to
                         locate it automatically                        
 -key <key>           - [mandatory] App Key needed to connect to the Hue
--light <id>          - Light to control. Enter 1 to max lights. 0 is only valid with -status
+-light <id>,[id]     - Lights to control. Enter 1 to max lights. 0 is only valid with -status
 -brightness <number> - Brightness level 0 - 255
--color <color>       - Color value in hex 'rrggbb'. E.g. 00FF00
+-color <color>       - Color value in hex 'rrggbb'. E.g. 00FF00 or common color names (e.g. red, blue, ...)
                        or <color> can also be 'Once' for alert once or 'Multi' for multiple alerts
                        or <color> can also be 'ColorLoop' to start a color loop
                        or <color> can be 'None' to stop ColorLoop or Multi Alert
@@ -26,7 +26,7 @@ Command line options:
                         Example: HueCmd -register HueCmd SomeKey1234
 Examples:
         HueCmd -key SomeKey1234 -light 4 -brightness 10         Sets light 4 to brightness level of 10
-        HueCmd -key SomeKey1234 -light 3 -color ff0000          Sets light 3 to red
+        HueCmd -key SomeKey1234 -light 3,7 -color ff0000        Sets lights 3 and 7 to red
 ```
 
 uses https://github.com/Q42/Q42.HueApi
