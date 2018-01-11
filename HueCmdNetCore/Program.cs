@@ -177,7 +177,7 @@ namespace HueCmdNetCore
                     Console.WriteLine("");
                 }
             }
-            else if (CmdLineOptions.light.Count() > 1)
+            else if (CmdLineOptions.light.Count() >= 1)
             {
                 var light = await client.GetLightAsync(CmdLineOptions.light[0]);
                 if (light == null)

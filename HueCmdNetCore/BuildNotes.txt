@@ -1,6 +1,11 @@
 ﻿-----------------------------------------------------------------
+// Windows x86
 dotnet build -c release -r win10-x86
+dotnet publish -c release -r win10-x86
+
+// Windows x64
 dotnet build -c release -r win10-x64
+dotnet publish -c release -r win10-x64
 
 // Windows 10 Iot on Pi
 dotnet build -c release -r win-arm
