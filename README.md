@@ -13,7 +13,7 @@ Command line options:
 					   More then one light can be entered using comma as separator
 -brightness <number> - Brightness level 0 - 255
 -color <color>       - Color value in hex 'rrggbb'. E.g. 00FF00 
-					   or common color names (e.g. red, blue, ...)
+                       or common color names (e.g. red, blue, ...)
                        or <color> can also be 'Once' for alert once or 'Multi' for multiple alerts
                        or <color> can also be 'ColorLoop' to start a color loop
                        or <color> can be 'None' to stop ColorLoop or Multi Alert
@@ -23,12 +23,13 @@ Command line options:
                        Use 0 for status of all lights
                        This option overrides other commands
 -register <appName> <appkey>
-                        - Registry App Name & App Key with the Hue. Requires Name and Key.
-                        A Key must be registered with the Hue before using the other options
-                        Example: HueCmd -register HueCmd SomeKey1234
+                     - Registry App Name & App Key with the Hue. Requires Name and Key.
+                       A Key must be registered with the Hue before using the other options
+                       Example: HueCmd -register HueCmd SomeKey1234
 Examples:
         HueCmd -key SomeKey1234 -light 4 -brightness 10         Sets light 4 to brightness level of 10
         HueCmd -key SomeKey1234 -light 3,7 -color ff0000        Sets lights 3 and 7 to red
+        HueCmd -key SomeKey1234 -light 5,6,7 -color green       Sets lights 3,5 and 7 to green
 ```
 
 uses https://github.com/Q42/Q42.HueApi
