@@ -2,16 +2,18 @@
 Windows Command Line Tool for controlling the Philips Hue. Use it in scripts/batch files.
 HueCmd - .Net Core 2.0 version. Works on Windows desktop, Linux (x64 and ARM) and Windows IOT (ARM). 
 
-Prebuilt executable is in the EXE folder for desktop and Arm version (works on Windows 10 IOT Raspberry PI).
+Prebuilt executable is in the EXE folder for desktop and ARM version (works on Windows 10 IOT Raspberry PI).
 
 ```
 Command line options:
 -ip address          - [optional] IP address of HUE, otherwise will try to
                         locate it automatically                        
 -key <key>           - [mandatory] App Key needed to connect to the Hue
--light <id>,[id]     - Lights to control. Enter 1 to max lights. 0 is only valid with -status
+-light <id>,[id]     - Lights to control. Enter ID value of 1 to max lights. 0 is only valid with -status
+					   More then one light can be entered using comma as separator
 -brightness <number> - Brightness level 0 - 255
--color <color>       - Color value in hex 'rrggbb'. E.g. 00FF00 or common color names (e.g. red, blue, ...)
+-color <color>       - Color value in hex 'rrggbb'. E.g. 00FF00 
+					   or common color names (e.g. red, blue, ...)
                        or <color> can also be 'Once' for alert once or 'Multi' for multiple alerts
                        or <color> can also be 'ColorLoop' to start a color loop
                        or <color> can be 'None' to stop ColorLoop or Multi Alert

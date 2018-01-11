@@ -118,7 +118,8 @@ namespace HueCmdNetCore
             Console.WriteLine("-light <id>,[id]     - Lights to control. Enter ID value of 1 to max lights. 0 is only valid with -status");
             Console.WriteLine("                       More then one light can be entered using comma as separator");
             Console.WriteLine("-brightness <number> - Brightness level 0 - 255");
-            Console.WriteLine("-color <color>       - Color value in hex 'rrggbb'. E.g. 00FF00 or common color names (e.g. red, blue, ...)" );
+            Console.WriteLine("-color <color>       - Color value in hex 'rrggbb'. E.g. 00FF00" );
+            Console.WriteLine("                       or <color> can be a common color name (e.g. red, blue, ...)");
             Console.WriteLine("                       or <color> can also be 'Once' for alert once or 'Multi' for multiple alerts");
             Console.WriteLine("                       or <color> can also be 'ColorLoop' to start a color loop");
             Console.WriteLine("                       or <color> can be 'None' to stop ColorLoop or Multi Alert");
@@ -132,7 +133,7 @@ namespace HueCmdNetCore
                               "\t\t\tExample: HueCmd -register HueCmd SomeKey1234");
             Console.WriteLine("Examples:");
             Console.WriteLine("\tHueCmd -key SomeKey1234 -light 4 -brightness 10\t\tSets light 4 to brightness level of 10");
-            Console.WriteLine("\tHueCmd -key SomeKey1234 -light 3,7 -color ff0000\t\tSets lights 3 & 7 to red");
+            Console.WriteLine("\tHueCmd -key SomeKey1234 -light 3,7 -color red\t\tSets lights 3 & 7 to red");
         }
     }
 }
